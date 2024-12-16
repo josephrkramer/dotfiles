@@ -17,4 +17,5 @@ ollama serve &
 sleep 2
 
 ollama pull llama3.1:8b
-ollama pull starcoder2:3b
+ollama pull qwen2.5-coder:1.5b
+ollama pull nomic-embed-text
