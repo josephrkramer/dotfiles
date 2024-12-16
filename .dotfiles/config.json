@@ -1,16 +1,21 @@
 {
   "models": [
     {
-      "title": "Llama 3.1 8B",
+      "title": "Llama3.1 8B",
       "provider": "ollama",
       "model": "llama3.1:8b"
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Starcoder 3b",
-    "provider": "ollama",
-    "model": "starcoder2:3b"
+    "title": "Qwen2.5-Coder 1.5B",
+    "model": "qwen2.5-coder:1.5b",
+    "provider": "ollama"
   },
+  "embeddingsProvider": {
+    "provider": "ollama",
+    "model": "nomic-embed-text"
+  },
+  "allowAnonymousTelemetry": true,
   "customCommands": [
     {
       "name": "test",
@@ -61,9 +66,5 @@
       "name": "commit",
       "description": "Generate a git commit message"
     }
-  ],
-  "embeddingsProvider": {
-    "provider": "ollama",
-    "model": "nomic-embed-text"
-  }
+  ]
 }
