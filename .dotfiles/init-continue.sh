@@ -6,6 +6,8 @@
 # Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
 # ext install Continue.continue
 
+code --force --install-extension continue.continue
+
 mkdir ~/.continue
 cp config.json ~/.continue/.
 
