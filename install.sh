@@ -12,7 +12,8 @@ if [ ! -d "$HOME/.nvm" ]; then
 fi
 
 # Source nvm script to make nvm command available
-export NVM_DIR="$HOME/.nvm"
+#export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/usr/local/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
