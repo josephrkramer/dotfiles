@@ -11,7 +11,7 @@ validate_email() {
 
 # Get username
 while true; do
-  read -p "Enter your Git username: " username
+  read -p "Enter your full name: " username
   if [[ -n "$username" ]]; then # Check if username is not empty
     break
   else
