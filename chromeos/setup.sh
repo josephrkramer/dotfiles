@@ -10,3 +10,6 @@ gh auth login
 
 # install nodejs
 ./install-node.sh
+
+# install antigravity
+./install-antigravity.sh
