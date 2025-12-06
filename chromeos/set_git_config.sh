@@ -33,6 +33,7 @@ done
 # Set Git config
 git config --global user.name "$username"
 git config --global user.email "$email"
+git config --global push.autoSetupRemote true 2>/dev/null
 
 # Confirmation message
 echo "Git username and email set successfully:"
