@@ -13,3 +13,6 @@ gh auth login
 
 # install antigravity
 ./install-antigravity.sh
+
+# install chrome (required for antigravity agent browser)
+./install-chrome.sh
