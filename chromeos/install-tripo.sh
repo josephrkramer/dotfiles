@@ -5,6 +5,7 @@ sudo apt install -y python3-pip
 cd ~
 
 git clone https://github.com/VAST-AI-Research/TripoSR.git
+cd TripoSR
 
 python3 -m venv .venv
 source .venv/bin/activate
