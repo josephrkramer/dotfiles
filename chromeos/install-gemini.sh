@@ -12,4 +12,4 @@ else
   echo "Gemini CLI is already installed."
 fi
 
-echo "Dotfiles install script finished."
+echo "Gemini CLI install script finished."
