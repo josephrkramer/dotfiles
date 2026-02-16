@@ -11,6 +11,9 @@ gh auth login
 # install nodejs
 ./install-node.sh
 
+# install gemini cli
+./install-gemini.sh
+
 # install antigravity
 ./install-antigravity.sh
 
