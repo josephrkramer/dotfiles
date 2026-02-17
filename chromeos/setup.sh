@@ -5,6 +5,9 @@
 ./install-gh-cli.sh
 gh auth login
 
+# install btop
+./install-btop.sh
+
 # install vscode
 ./install-vscode.sh
 
