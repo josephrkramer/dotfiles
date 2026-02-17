@@ -29,13 +29,19 @@ go version
 # Optional (for full stack mode)
 if ! command -v tmux &> /dev/null; then
     sudo apt update && sudo apt install -y tmux
+    echo "set -g mouse on" >> ~/.tmux.conf
 fi
 
-# Install Gas Town CLI
-go install github.com/steveyegge/gastown/cmd/gt@latest
+# enter a tmux session to verify installation and create necessary tmux directories/files
+tmux
 
 # Install Beads (issue tracker)
-go install github.com/steveyegge/beads/cmd/bd@latest
+# go install github.com/steveyegge/beads/cmd/bd@latest
+npm install -g @beads/bd
+
+# Install Gas Town CLI
+# go install github.com/steveyegge/gastown/cmd/gt@latest
+npm install -g @gastown/gt
 
 # Verify installation
 gt version
@@ -54,7 +60,15 @@ gt enable              # enable Gas Town system-wide
 if [ ! -d ".git" ]; then
     gt git-init            # initialize a git repo for your HQ
 fi
+
+gt config default-agent gemini
+
 gt up                  # Start all services. Use gt down or gt shutdown for stopping. 
+
+gt config default-agent gemini
 
 gt doctor              # Run health checks
 gt status              # Show workspace status
+
+# if dolt is not installed properly
+# sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
