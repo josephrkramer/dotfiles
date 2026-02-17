@@ -18,7 +18,7 @@ fi
 
 # Ensure Go is in PATH for this script and future shells
 GO_PATH_EXPORT='export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin'
-if ! grep -qF "usr/local/go/bin" ~/.bashrc; then
+if ! grep -qFx "$GO_PATH_EXPORT" ~/.bashrc; then
     echo "$GO_PATH_EXPORT" >> ~/.bashrc
 fi
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
