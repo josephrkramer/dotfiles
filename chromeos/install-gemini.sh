@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "Starting Gemini install script..."
+
 # --- Install Google Gemini CLI ---
 
 # Install Gemini CLI globally using npm
