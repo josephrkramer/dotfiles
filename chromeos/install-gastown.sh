@@ -35,6 +35,9 @@ fi
 # enter a tmux session to verify installation and create necessary tmux directories/files
 tmux
 
+# if dolt is not installed properly
+sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
+
 # Install Beads (issue tracker)
 # go install github.com/steveyegge/beads/cmd/bd@latest
 npm install -g @beads/bd
@@ -65,10 +68,5 @@ gt config default-agent gemini
 
 gt up                  # Start all services. Use gt down or gt shutdown for stopping. 
 
-gt config default-agent gemini
-
 gt doctor              # Run health checks
 gt status              # Show workspace status
-
-# if dolt is not installed properly
-# sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
