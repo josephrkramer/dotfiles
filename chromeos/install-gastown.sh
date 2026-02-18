@@ -1,6 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
+# C/C++ Build Tools: Required for compiling Go code with CGO_ENABLED=1.
+sudo apt-get install -y gcc g++ make
+# ICU Development Libraries: Required by the go-icu-regex dependency used in the beads (bd) package.
+sudo apt-get install -y libicu-dev
+# Go Build Environment: Ensuring Go is configured to allow CGO.
+export CGO_ENABLED=1
+
 LATEST_GO_VERSION=$(curl -s 'https://go.dev/VERSION?m=text' | head -n 1)
 CURRENT_GO_VERSION=$(go version 2>/dev/null | awk '{print $3}' || true)
 
