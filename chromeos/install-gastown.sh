@@ -32,23 +32,20 @@ if ! command -v tmux &> /dev/null; then
     echo "set -g mouse on" >> ~/.tmux.conf
 fi
 
-# enter a tmux session to verify installation and create necessary tmux directories/files
-tmux
-
 # if dolt is not installed properly
 sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
 
 # Install Beads (issue tracker)
-# go install github.com/steveyegge/beads/cmd/bd@latest
-npm install -g @beads/bd
+go install github.com/steveyegge/beads/cmd/bd@latest
+# npm install -g @beads/bd
 
 # Install Gas Town CLI
-# go install github.com/steveyegge/gastown/cmd/gt@latest
-npm install -g @gastown/gt
+go install github.com/steveyegge/gastown/cmd/gt@latest
+# npm install -g @gastown/gt
 
 # Verify installation
-gt version
 bd version
+gt version
 
 # Create a Gas Town workspace (HQ)
 if [ ! -d "$HOME/gt" ]; then
@@ -62,11 +59,15 @@ cd ~/gt
 gt enable              # enable Gas Town system-wide
 if [ ! -d ".git" ]; then
     gt git-init            # initialize a git repo for your HQ
+    git add .
+    git commit -m 'Initial Gas Town HQ'
 fi
 
 gt config default-agent gemini
 
-gt up                  # Start all services. Use gt down or gt shutdown for stopping. 
+echo "Gas Town setup complete! You can now use the following commands:"
 
-gt doctor              # Run health checks
-gt status              # Show workspace status
+echo "gt up                  # Start all services. Use gt down or gt shutdown for stopping."
+
+echo "gt doctor              # Run health checks"
+echo "gt status              # Show workspace status"
