@@ -3,4 +3,4 @@ set -euo pipefail
 
 # disk usage analyzer
 sudo apt update
-sudo apt install -y baobab
+sudo apt install -y filelight
