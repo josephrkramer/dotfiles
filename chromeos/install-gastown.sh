@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# C/C++ Build Tools: Required for compiling Go code with CGO_ENABLED=1.
-sudo apt-get install -y gcc g++ make
+# C/C++ Build Tools, Git, and SQLite: Required for compiling Go code and running Gas Town/Beads.
+sudo apt-get install -y gcc g++ make git sqlite3
 # ICU Development Libraries: Required by the go-icu-regex dependency used in the beads (bd) package.
 sudo apt-get install -y libicu-dev
 # Go Build Environment: Ensuring Go is configured to allow CGO.
@@ -78,3 +78,7 @@ echo "gt up                  # Start all services. Use gt down or gt shutdown fo
 
 echo "gt doctor              # Run health checks"
 echo "gt status              # Show workspace status"
+
+echo ""
+echo "To start a new project with Beads tracking, run:"
+echo "cd <your-project-dir> && bd init"
