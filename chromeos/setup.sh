@@ -1,6 +1,20 @@
 #!/bin/bash
 set -euo pipefail
 
+HEADLESS=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --headless)
+      HEADLESS=1
+      shift # past argument
+      ;;
+    *)
+      # unknown option
+      shift # past argument
+      ;;
+  esac
+done
+
 # install btop first so progress can be monitored for the rest of the setup
 ./install-btop.sh
 
@@ -12,7 +26,9 @@ set -euo pipefail
 gh auth login
 
 # install vscode
-./install-vscode.sh
+if [ "$HEADLESS" -eq 0 ]; then
+  ./install-vscode.sh
+fi
 
 # install nodejs
 ./install-node.sh
@@ -26,7 +42,9 @@ export NVM_DIR="$HOME/.config/nvm"
 ./install-gemini.sh
 
 # install antigravity
-./install-antigravity.sh
+if [ "$HEADLESS" -eq 0 ]; then
+  ./install-antigravity.sh
+fi
 
 # install chrome (required for antigravity agent browser)
 #./install-chrome.sh
