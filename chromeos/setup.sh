@@ -2,11 +2,17 @@
 set -euo pipefail
 
 HEADLESS=0
-
-for arg in "$@"; do
-  if [ "$arg" == "--headless" ]; then
-    HEADLESS=1
-  fi
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --headless)
+      HEADLESS=1
+      shift # past argument
+      ;;
+    *)
+      # unknown option
+      shift # past argument
+      ;;
+  esac
 done
 
 # install btop first so progress can be monitored for the rest of the setup
