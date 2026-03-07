@@ -36,6 +36,9 @@ EOF
   echo "You must log out and log back in for this change to take effect."
 
   echo "Docker installation finished."
+
+  echo
+  echo "Try the command 'docker run hello-world' to test the installation"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
