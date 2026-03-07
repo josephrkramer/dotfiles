@@ -42,8 +42,16 @@ fi
 # if dolt is not installed properly
 sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash'
 
+# Ensure bd is in PATH for this script and future shells
+BD_PATH_EXPORT='export PATH=$PATH:$HOME/.local/bin'
+if ! grep -qFx "$BD_PATH_EXPORT" ~/.bashrc; then
+    echo "$BD_PATH_EXPORT" >> ~/.bashrc
+fi
+export PATH=$PATH:$HOME/.local/bin
+
 # Install Beads (issue tracker)
-go install github.com/steveyegge/beads/cmd/bd@latest
+curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
+#go install github.com/steveyegge/beads/cmd/bd@latest
 # npm install -g @beads/bd
 
 # Install Gas Town CLI
@@ -56,11 +64,15 @@ gt version
 
 # Create a Gas Town workspace (HQ)
 if [ ! -d "$HOME/gt" ]; then
-    gt install ~/gt --shell
+    #gt install ~/gt --shell
+    gt install ~/gt --git
 fi
 
 # Verify installation
 cd ~/gt
+
+# Ensure beads has been initialized for gastown
+#bd init
 
 # These commands are assumed to be idempotent or safe to re-run
 gt enable              # enable Gas Town system-wide
@@ -71,6 +83,13 @@ if [ ! -d ".git" ]; then
 fi
 
 gt config default-agent gemini
+
+# Add your first project
+gt rig add batuu-scanner2 https://github.com/josephrkramer/batuu-scanner2.git
+
+# Create your crew workspace
+gt crew add $USER --rig batuu-scanner2
+cd batuu-scanner2/crew/$USER
 
 echo "Gas Town setup complete! You can now use the following commands:"
 
