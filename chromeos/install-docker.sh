@@ -31,6 +31,10 @@ EOF
   # Add the current user to the docker group
   sudo usermod -aG docker "$USER"
 
+  echo
+  echo "User '$USER' has been added to the 'docker' group."
+  echo "You must log out and log back in for this change to take effect."
+
   echo "Docker installation finished."
 }
 
