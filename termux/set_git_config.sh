@@ -33,6 +33,13 @@ set_git_config() {
       fi
     done
 
+    # Install git-lfs if not present
+    if ! command -v git-lfs >/dev/null 2>&1; then
+      pkg update
+      pkg install -y git-lfs
+      git lfs install
+    fi
+
     # Set Git config
     git config --global user.name "$username"
     git config --global user.email "$email"
