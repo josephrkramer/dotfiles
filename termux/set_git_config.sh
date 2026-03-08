@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # Function to validate email address format (basic check)
 validate_email() {
