@@ -17,29 +17,29 @@ setup_termux() {
   done
 
   # install btop first so progress can be monitored for the rest of the setup
-  ./termux/install-btop.sh
+  ./install-btop.sh
 
   # setup github (installs git as dependency)
-  ./termux/install-gh-cli.sh
+  ./install-gh-cli.sh
   gh auth login
 
   # setup local git
-  ./termux/set_git_config.sh
+  ./set_git_config.sh
 
   # install vscode (code-server)
   if [ "$HEADLESS" -eq 0 ]; then
-    ./termux/install-vscode.sh
+    ./install-vscode.sh
   fi
 
   # install nodejs
-  ./termux/install-node.sh
+  ./install-node.sh
 
   # install gemini cli
-  ./termux/install-gemini.sh
+  ./install-gemini.sh
 
   # install antigravity
   if [ "$HEADLESS" -eq 0 ]; then
-    ./termux/install-antigravity.sh || true
+    ./install-antigravity.sh || true
   fi
 }
 
