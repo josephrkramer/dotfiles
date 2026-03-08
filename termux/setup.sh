@@ -2,11 +2,11 @@
 set -euo pipefail
 
 setup_termux() {
-  HEADLESS=0
+  HEADLESS=1
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --headless)
-        HEADLESS=1
+      --gui)
+        HEADLESS=0
         shift # past argument
         ;;
       *)
