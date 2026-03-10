@@ -16,9 +16,6 @@ setup_termux() {
     esac
   done
 
-  # install btop first so progress can be monitored for the rest of the setup
-  ./install-btop.sh
-
   # setup github (installs git as dependency)
   ./install-gh-cli.sh
   gh auth login
