@@ -8,6 +8,8 @@ install_gemini() {
 
   # Install Gemini CLI globally using npm
   if ! command -v gemini > /dev/null; then
+    echo "Installing build dependencies for native modules..."
+    pkg install -y python make clang
     echo "Installing @google/gemini-cli..."
     npm install -g @google/gemini-cli
     echo "Gemini CLI installed successfully."
