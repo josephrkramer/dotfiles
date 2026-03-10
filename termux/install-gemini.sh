@@ -11,6 +11,9 @@ install_gemini() {
     echo "Installing build dependencies for native modules..."
     pkg install -y python make clang
     echo "Installing @google/gemini-cli..."
+    if [ ! -f ~/.gyp/include.gypi ]; then
+      mkdir -p ~/.gyp && echo "{'variables':{'android_ndk_path':''}}" > ~/.gyp/include.gypi
+    fi
     npm install -g @google/gemini-cli
     echo "Gemini CLI installed successfully."
   else
