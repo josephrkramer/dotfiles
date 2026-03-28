@@ -11,48 +11,24 @@ mkdir -p "$HOME/.config/nvm"
 touch "$HOME/.config/nvm/nvm.sh"
 touch "$HOME/.config/nvm/bash_completion"
 
+# Helper function to create mock scripts
+create_mock() {
+  local script_name="$1"
+  cat << EOF > "$MOCK_DIR/$script_name"
+#!/bin/bash
+echo "Mocked $script_name"
+EOF
+  chmod +x "$MOCK_DIR/$script_name"
+}
+
 # Create mock scripts for the dependencies called in setup_chromeos
-cat << 'EOF' > "$MOCK_DIR/install-btop.sh"
-#!/bin/bash
-echo "Mocked install-btop.sh"
-EOF
-chmod +x "$MOCK_DIR/install-btop.sh"
-
-cat << 'EOF' > "$MOCK_DIR/set_git_config.sh"
-#!/bin/bash
-echo "Mocked set_git_config.sh"
-EOF
-chmod +x "$MOCK_DIR/set_git_config.sh"
-
-cat << 'EOF' > "$MOCK_DIR/install-gh-cli.sh"
-#!/bin/bash
-echo "Mocked install-gh-cli.sh"
-EOF
-chmod +x "$MOCK_DIR/install-gh-cli.sh"
-
-cat << 'EOF' > "$MOCK_DIR/install-vscode.sh"
-#!/bin/bash
-echo "Mocked install-vscode.sh"
-EOF
-chmod +x "$MOCK_DIR/install-vscode.sh"
-
-cat << 'EOF' > "$MOCK_DIR/install-node.sh"
-#!/bin/bash
-echo "Mocked install-node.sh"
-EOF
-chmod +x "$MOCK_DIR/install-node.sh"
-
-cat << 'EOF' > "$MOCK_DIR/install-gemini.sh"
-#!/bin/bash
-echo "Mocked install-gemini.sh"
-EOF
-chmod +x "$MOCK_DIR/install-gemini.sh"
-
-cat << 'EOF' > "$MOCK_DIR/install-antigravity.sh"
-#!/bin/bash
-echo "Mocked install-antigravity.sh"
-EOF
-chmod +x "$MOCK_DIR/install-antigravity.sh"
+create_mock "install-btop.sh"
+create_mock "set_git_config.sh"
+create_mock "install-gh-cli.sh"
+create_mock "install-vscode.sh"
+create_mock "install-node.sh"
+create_mock "install-gemini.sh"
+create_mock "install-antigravity.sh"
 
 # Mock 'gh' command
 cat << 'EOF' > "$MOCK_DIR/gh"
