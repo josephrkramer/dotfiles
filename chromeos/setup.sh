@@ -45,6 +45,3 @@ export NVM_DIR="$HOME/.config/nvm"
 if [ "$HEADLESS" -eq 0 ]; then
   ./install-antigravity.sh
 fi
-
-# install chrome (required for antigravity agent browser)
-#./install-chrome.sh
