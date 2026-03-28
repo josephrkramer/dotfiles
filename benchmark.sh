@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Generate a dummy file (1MB of random data should be enough to not be too slow but measure I/O)
 dd if=/dev/urandom of=dummy.file bs=1M count=10 2>/dev/null
 
