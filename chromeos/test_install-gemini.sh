@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -euo pipefail
 # Create a mock environment
 MOCK_DIR=$(mktemp -d)
 export PATH="$MOCK_DIR:$PATH"
