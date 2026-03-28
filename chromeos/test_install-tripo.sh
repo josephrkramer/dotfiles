@@ -61,7 +61,16 @@ cd "$MOCK_DIR"
 export HOME="$MOCK_DIR"
 
 # Run the function
-install_tripo
+output=$(install_tripo)
+
+# Verify that key commands were called. `set -e` will cause a failure if any are missing.
+echo "$output" | grep -q "Mock sudo: apt update"
+echo "$output" | grep -q "Mock sudo: apt install -y python3-pip python3-venv"
+echo "$output" | grep -q "Mock git: clone https://github.com/VAST-AI-Research/TripoSR.git"
+echo "$output" | grep -q "Mock python3 venv: -m venv .venv"
+echo "$output" | grep -q "Mock pip3: install torch torchvision --index-url https://download.pytorch.org/whl/cpu"
+echo "$output" | grep -q "Mock pip: install --upgrade setuptools"
+echo "$output" | grep -q "Mock pip: install -r requirements.txt"
 
 echo "test_install-tripo.sh passed"
 exit 0
