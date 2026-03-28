@@ -14,7 +14,15 @@ export PATH="$MOCK_DIR:$PATH"
 
 . "$(dirname "${BASH_SOURCE[0]}")/install-ollama.sh"
 
-install_ollama
+OUTPUT="$(install_ollama 2>&1)"
+EXPECTED="Mock pkg called with args: install -y ollama"
+
+if [[ "$OUTPUT" != "$EXPECTED" ]]; then
+  echo "Test failed: Unexpected output from install_ollama." >&2
+  echo "Expected: '$EXPECTED'" >&2
+  echo "Actual:   '$OUTPUT'" >&2
+  exit 1
+fi
 
 echo "test_install-ollama.sh passed"
 exit 0
