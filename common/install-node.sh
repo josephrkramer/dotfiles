@@ -19,11 +19,11 @@ install_node() {
 
   # Install Node.js v22 (or v18+) and set as default
   # Gemini CLI requires Node 18+
-  if ! nvm ls "${NODE_VERSION_TO_INSTALL:-22}" > /dev/null 2>&1; then
-    echo "Installing Node.js v${NODE_VERSION_TO_INSTALL:-22}..."
-    nvm install "${NODE_VERSION_TO_INSTALL:-22}"
-    nvm use "${NODE_VERSION_TO_INSTALL:-22}"
-    nvm alias default "${NODE_VERSION_TO_INSTALL:-22}"
+  if ! nvm ls 22 > /dev/null 2>&1; then
+    echo "Installing Node.js v22..."
+    nvm install 22
+    nvm use 22
+    nvm alias default 22
   fi
 
   echo "nvm/Node.js install script finished."
