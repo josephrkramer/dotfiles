@@ -51,10 +51,20 @@ pushd "$MOCK_DIR" > /dev/null
 . "$SCRIPT_DIR/setup.sh"
 
 echo "Testing headless=0 (default)..."
-setup_chromeos
+output=$(setup_chromeos)
+echo "$output" | grep -q "Mocked install-vscode.sh"
+echo "$output" | grep -q "Mocked install-antigravity.sh"
 
 echo "Testing --headless..."
-setup_chromeos --headless
+output=$(setup_chromeos --headless)
+if echo "$output" | grep -q "Mocked install-vscode.sh"; then
+  echo "FAIL: install-vscode.sh was called in headless mode" >&2
+  exit 1
+fi
+if echo "$output" | grep -q "Mocked install-antigravity.sh"; then
+  echo "FAIL: install-antigravity.sh was called in headless mode" >&2
+  exit 1
+fi
 
 popd > /dev/null
 
