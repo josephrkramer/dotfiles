@@ -79,5 +79,10 @@ source ./install.sh
 # but the script uses `[ -s ... ] && \. ...` so it won't fail if they don't exist.
 install_dotfiles
 
+if ! grep -q "install -g @google/gemini-cli" "$NPM_LOG"; then
+  echo "FAIL: npm install for gemini-cli was not called." >&2
+  exit 1
+fi
+
 echo "test_install.sh passed"
 exit 0
