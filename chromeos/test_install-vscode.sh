@@ -48,8 +48,18 @@ export PATH="$TEST_MOCK_DIR:$PATH"
 
 # Run tests
 echo "Testing install_vscode..."
-if ! install_vscode > /dev/null 2>&1; then
-  echo "❌ install_vscode failed"
+if ! output=$(install_vscode 2>&1); then
+  echo "❌ install_vscode failed with a non-zero exit code."
+  echo "Output:"
+  echo "$output"
+  exit 1
+fi
+
+# Example check for a key command. Consider adding more checks for coverage.
+if ! echo "$output" | grep -q "mock apt-get update"; then
+  echo "❌ Test failed: 'apt-get update' was not called."
+  echo "Output:"
+  echo "$output"
   exit 1
 fi
 
