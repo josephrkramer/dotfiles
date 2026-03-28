@@ -11,9 +11,11 @@ install_dotfiles() {
     echo "Installing nvm..."
     local nvm_script
     nvm_script=$(mktemp)
+    trap 'rm -f "$nvm_script"' EXIT
     curl -sS -o "$nvm_script" https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh
     bash "$nvm_script"
-    rm -f "$nvm_script"
+    rm -f "$nvm_script" # Clean up on success
+    trap - EXIT # Remove the trap
   fi
 
   # Source nvm script to make nvm command available
