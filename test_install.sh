@@ -64,9 +64,10 @@ nvm() {
 }
 export -f nvm
 
+export NPM_LOG="$MOCK_DIR/npm.log"
 cat << 'EOF' > "$MOCK_DIR/npm"
 #!/bin/bash
-echo "Mock npm $@"
+echo "$@" >> "$NPM_LOG"
 EOF
 chmod +x "$MOCK_DIR/npm"
 
