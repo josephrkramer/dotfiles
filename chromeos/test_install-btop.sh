@@ -10,6 +10,7 @@ export PATH="$MOCK_DIR:$PATH"
 # Create mock for sudo
 cat << 'EOF' > "$MOCK_DIR/sudo"
 #!/bin/bash
+echo "$@" >> "$SUDO_CALLS_LOG"
 echo "MOCK SUDO: $@" >&2
 if [[ "${MOCK_SUDO_FAIL:-0}" == "1" ]]; then
     exit 1
