@@ -22,8 +22,17 @@ export PATH="$MOCK_DIR:$PATH"
 . "$(dirname "${BASH_SOURCE[0]}")/install-filelight.sh"
 
 # Run the function to test
-if ! install_filelight; then
-  echo "test_install-filelight.sh failed"
+# Run the function to test and capture its output
+output=$(install_filelight)
+
+# Verify that the expected commands were run
+if ! echo "$output" | grep -q "mock sudo: apt update"; then
+  echo "FAIL: 'sudo apt update' was not called." >&2
+  exit 1
+fi
+
+if ! echo "$output" | grep -q "mock sudo: apt install -y filelight"; then
+  echo "FAIL: 'sudo apt install -y filelight' was not called." >&2
   exit 1
 fi
 
