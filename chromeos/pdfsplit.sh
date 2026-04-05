@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 
 # 1. Check if qpdf is installed
 if ! command -v qpdf &> /dev/null; then
