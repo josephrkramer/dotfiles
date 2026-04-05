@@ -17,6 +17,11 @@ if [[ -z "$FILE" || ! -f "$FILE" ]]; then
     exit 1
 fi
 
+if ! [[ "$PIECES" =~ ^[0-9]+$ ]] || [ "$PIECES" -le 0 ]; then
+    echo "Error: Number of pieces must be a positive integer."
+    exit 1
+fi
+
 # 3. Get total page count
 TOTAL_PAGES=$(qpdf --show-npages "$FILE")
 
