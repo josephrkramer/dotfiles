@@ -28,6 +28,7 @@ create_mock "install-gh-cli.sh"
 create_mock "install-vscode.sh"
 create_mock "install-node.sh"
 create_mock "install-gemini.sh"
+create_mock "install-opencode.sh"
 create_mock "install-antigravity.sh"
 
 # Mock 'gh' command
