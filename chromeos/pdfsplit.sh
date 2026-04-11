@@ -28,7 +28,7 @@ split_pdf() {
     TOTAL_PAGES=$(qpdf --show-npages "$FILE")
 
     # 4. Calculate pages per piece (integer division)
-    local PAGES_PER_PIECE=$((TOTAL_PAGES / 10#$PIECES))
+    local PAGES_PER_PIECE=$((TOTAL_PAGES / PIECES))
 
     if [ "$PAGES_PER_PIECE" -eq 0 ]; then
         echo "Error: Number of pieces exceeds number of pages."
@@ -39,8 +39,8 @@ split_pdf() {
     echo "Splitting into $PIECES pieces (approx $PAGES_PER_PIECE pages each)..."
 
     # 5. Loop and extract
-    local i START END OUTPUT_NAME
-    for i in $(seq 1 "$PIECES"); do
+    local START END OUTPUT_NAME i
+    for ((i=1; i<=PIECES; i++)); do
         START=$(( (i - 1) * PAGES_PER_PIECE + 1 ))
 
         # If it's the last piece, capture all remaining pages
@@ -50,7 +50,7 @@ split_pdf() {
             END=$(( i * PAGES_PER_PIECE ))
         fi
 
-        OUTPUT_NAME="${FILE%.*}_part${i}.pdf"
+        OUTPUT_NAME="${FILE%.[Pp][Dd][Ff]}_part${i}.pdf"
 
         echo "Creating $OUTPUT_NAME (Pages $START-$END)..."
         qpdf --empty --pages "$FILE" "$START-$END" -- "$OUTPUT_NAME"
