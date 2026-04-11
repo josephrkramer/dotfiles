@@ -24,7 +24,8 @@ chmod +x "$MOCK_DIR/npm"
 # Since `opencode` is not in the mock path, it will fail, which is what we want for the install path test.
 
 
-source chromeos/install-opencode.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/install-opencode.sh"
 
 # Run the function
 if ! install_opencode; then
