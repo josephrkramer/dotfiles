@@ -39,8 +39,8 @@ split_pdf() {
     echo "Splitting into $PIECES pieces (approx $PAGES_PER_PIECE pages each)..."
 
     # 5. Loop and extract
-    local START END OUTPUT_NAME
-    for i in $(seq 1 "$PIECES"); do
+    local START END OUTPUT_NAME i
+    for ((i=1; i<=PIECES; i++)); do
         START=$(( (i - 1) * PAGES_PER_PIECE + 1 ))
 
         # If it's the last piece, capture all remaining pages
