@@ -50,7 +50,7 @@ split_pdf() {
             END=$(( i * PAGES_PER_PIECE ))
         fi
 
-        OUTPUT_NAME="${FILE%.pdf}_part${i}.pdf"
+        OUTPUT_NAME="${FILE%.[Pp][Dd][Ff]}_part${i}.pdf"
 
         echo "Creating $OUTPUT_NAME (Pages $START-$END)..."
         qpdf --empty --pages "$FILE" "$START-$END" -- "$OUTPUT_NAME"
