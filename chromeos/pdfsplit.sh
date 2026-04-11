@@ -28,7 +28,7 @@ split_pdf() {
     TOTAL_PAGES=$(qpdf --show-npages "$FILE")
 
     # 4. Calculate pages per piece (integer division)
-    local PAGES_PER_PIECE=$((TOTAL_PAGES / PIECES))
+    local PAGES_PER_PIECE=$((TOTAL_PAGES / 10#$PIECES))
 
     if [ "$PAGES_PER_PIECE" -eq 0 ]; then
         echo "Error: Number of pieces exceeds number of pages."
