@@ -29,6 +29,7 @@ create_mock "install-vscode.sh"
 create_mock "install-node.sh"
 create_mock "install-gemini.sh"
 create_mock "install-antigravity.sh"
+create_mock "install-nvidia-sync.sh"
 
 # Mock 'gh' command
 cat << 'EOF' > "$MOCK_DIR/gh"
