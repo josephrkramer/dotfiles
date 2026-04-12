@@ -1,18 +1,24 @@
 #!/bin/bash
 set -euo pipefail
 
-sudo apt update
-sudo apt install -y python3-pip python3-venv
+install_tripo() {
+  sudo apt update
+  sudo apt install -y python3-pip python3-venv
 
-cd ~
+  cd ~
 
-git clone https://github.com/VAST-AI-Research/TripoSR.git
-cd TripoSR
+  git clone https://github.com/VAST-AI-Research/TripoSR.git
+  cd TripoSR
 
-python3 -m venv .venv
-source .venv/bin/activate
+  python3 -m venv .venv
+  source .venv/bin/activate
 
-pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+  pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
-pip install --upgrade setuptools
-pip install -r requirements.txt
+  pip install --upgrade setuptools
+  pip install -r requirements.txt
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_tripo
+fi
