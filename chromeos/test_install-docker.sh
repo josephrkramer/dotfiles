@@ -29,4 +29,18 @@ source "$MOCKED_INSTALL_SCRIPT"
 # Call the function
 install_docker
 
+# Verify that key commands were executed via sudo
+if ! grep -q "apt-get update" "$SUDO_LOG"; then
+    echo "FAIL: 'apt-get update' was not called via sudo" >&2
+    exit 1
+fi
+if ! grep -q "apt-get install -y docker-ce" "$SUDO_LOG"; then
+    echo "FAIL: 'apt-get install -y docker-ce' was not called via sudo" >&2
+    exit 1
+fi
+if ! grep -q "usermod -aG docker" "$SUDO_LOG"; then
+    echo "FAIL: 'usermod -aG docker' was not called via sudo" >&2
+    exit 1
+fi
+
 echo "test_install-docker.sh passed"
