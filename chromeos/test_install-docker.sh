@@ -6,10 +6,11 @@ MOCK_DIR=$(mktemp -d)
 trap 'rm -rf "$MOCK_DIR"' EXIT
 export PATH="$MOCK_DIR:$PATH"
 
-# Create mock for sudo
+# Create mock for sudo that logs calls
+SUDO_LOG="$MOCK_DIR/sudo.log"
 cat > "$MOCK_DIR/sudo" << 'MOCK'
 #!/bin/bash
-echo "mock sudo: $@" >&2
+echo "$@" >> "$SUDO_LOG"
 MOCK
 chmod +x "$MOCK_DIR/sudo"
 
