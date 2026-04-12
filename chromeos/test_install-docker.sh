@@ -14,8 +14,17 @@ echo "$@" >> "$SUDO_LOG"
 MOCK
 chmod +x "$MOCK_DIR/sudo"
 
-# Source the script
-source chromeos/install-docker.sh
+# Create mock os-release to make test hermetic
+MOCK_OS_RELEASE="$MOCK_DIR/os-release"
+cat > "$MOCK_OS_RELEASE" <<EOF
+ID=debian
+VERSION_CODENAME=bullseye
+EOF
+
+# Source a modified version of the script that uses the mock os-release
+MOCKED_INSTALL_SCRIPT="$MOCK_DIR/install-docker.sh"
+sed "s|\. /etc/os-release|. $MOCK_OS_RELEASE|g" chromeos/install-docker.sh > "$MOCKED_INSTALL_SCRIPT"
+source "$MOCKED_INSTALL_SCRIPT"
 
 # Call the function
 install_docker
