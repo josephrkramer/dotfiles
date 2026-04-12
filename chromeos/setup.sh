@@ -42,9 +42,13 @@ setup_chromeos() {
   # install gemini cli
   ./install-gemini.sh
 
+  # install opencode
+  ./install-opencode.sh
+
   # install antigravity
   if [ "$HEADLESS" -eq 0 ]; then
     ./install-antigravity.sh
+    ./install-nvidia-sync.sh
   fi
 
   # install chrome (required for antigravity agent browser)

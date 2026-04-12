@@ -8,7 +8,7 @@ trap 'rm -rf "$MOCK_DIR"' EXIT
 # Create a mock sudo
 cat << 'EOF' > "$MOCK_DIR/sudo"
 #!/bin/bash
-echo "mock sudo called with: $@"
+echo "mock sudo called with: $@" >&2
 EOF
 chmod +x "$MOCK_DIR/sudo"
 
@@ -26,14 +26,22 @@ echo "mock apt called with: $@"
 EOF
 chmod +x "$MOCK_DIR/apt"
 
+# Create a mock tee
+cat << 'EOF' > "$MOCK_DIR/tee"
+#!/bin/bash
+echo "mock tee called with: $@"
+EOF
+chmod +x "$MOCK_DIR/tee"
+
 # Prepend the mock directory to PATH
 export PATH="$MOCK_DIR:$PATH"
 
 # Source the script (this won't execute the main logic because we check BASH_SOURCE)
-source chromeos/install-chrome.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/install-nvidia-sync.sh"
 
 # Run the function
-install_chrome
+install_nvidia_sync
 
-echo "test_install-chrome.sh passed"
+echo "test_install-nvidia-sync.sh passed"
 exit 0
