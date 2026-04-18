@@ -7,7 +7,7 @@ echo "Running benchmark test..."
 rm -f dummy.file
 
 # Run the benchmark script
-./benchmark.sh >/dev/null 2>&1
+"$(dirname "$0")/benchmark.sh" >/dev/null
 
 # Check if dummy.file was created
 if [[ -e dummy.file ]]; then
