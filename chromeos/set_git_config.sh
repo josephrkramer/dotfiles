@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$(dirname "${BASH_SOURCE[0]}")/../common/git_utils.sh"
+. "$(dirname "${BASH_SOURCE[0]}")"/../common/git_utils.sh || { echo "Error: Failed to load common/git_utils.sh" >&2; exit 1; }
 
 set_git_config() {
   # Get username
