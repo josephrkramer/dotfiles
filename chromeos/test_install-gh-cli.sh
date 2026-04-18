@@ -31,9 +31,7 @@ cat << 'EOF' > "$MOCK_DIR/wget"
 #!/bin/bash
 echo "mock wget called with: $@" >&2
 for arg in "$@"; do
-  if [[ "$arg" == "-O-" ]]; then
-    echo "mock gpg data"
-  elif [[ "$arg" == -O* ]]; then
+  if [[ "$arg" == -O* ]]; then
     file="${arg#-O}"
     echo "mock gpg data" > "$file"
   fi
@@ -55,7 +53,7 @@ chmod +x "$MOCK_DIR/dpkg"
 export PATH="$MOCK_DIR:$PATH"
 
 # Source the script
-source "$(dirname "${BASH_SOURCE[0]}")/install-gh-cli.sh"
+source chromeos/install-gh-cli.sh
 
 # Run the function
 install_gh_cli
