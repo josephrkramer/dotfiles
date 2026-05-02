@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_ollama() {
+  echo "Starting install-ollama.sh..."
   pkg install -y ollama
 }
 

@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_antigravity() {
+  echo "Starting install-antigravity.sh..."
   sudo mkdir -p /etc/apt/keyrings
   curl -fsSL https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | \
     sudo gpg --dearmor -o /etc/apt/keyrings/antigravity-repo-key.gpg

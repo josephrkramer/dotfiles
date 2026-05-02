@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_gemini() {
-  echo "Starting Gemini install script..."
+  echo "Starting install-gemini.sh..."
 
   # --- Install Google Gemini CLI ---
 

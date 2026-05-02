@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_tripo() {
+  echo "Starting install-tripo.sh..."
   sudo apt update
   sudo apt install -y python3-pip python3-venv
 

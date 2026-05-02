@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_gh_cli() {
+  echo "Starting install-gh-cli.sh..."
   pkg update
   pkg install -y gh
 }

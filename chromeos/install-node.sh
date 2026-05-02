@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_node() {
-  echo "Starting nvm install script..."
+  echo "Starting install-node.sh..."
 
   # Set NVM_DIR to define the installation directory for nvm.
   # This needs to be set *before* the install script is run.
