@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_filelight() {
+  echo "Starting install-filelight.sh..."
   # disk usage analyzer
   sudo apt update
   sudo apt install -y filelight

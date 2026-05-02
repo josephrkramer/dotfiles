@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_node() {
-  echo "Starting Node.js install script..."
+  echo "Starting install-node.sh..."
 
   pkg update
   pkg install -y nodejs

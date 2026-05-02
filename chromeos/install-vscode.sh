@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_vscode() {
+  echo "Starting install-vscode.sh..."
   sudo apt-get update
   sudo apt install -y wget gpg
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg

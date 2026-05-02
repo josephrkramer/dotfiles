@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_docker() {
-  echo "Starting Docker installation..."
+  echo "Starting install-docker.sh..."
 
   # Add Docker's official GPG key:
   sudo apt-get update

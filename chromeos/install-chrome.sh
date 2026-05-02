@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_chrome() {
+  echo "Starting install-chrome.sh..."
   sudo mkdir -p /etc/apt/keyrings
   curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg
   sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'

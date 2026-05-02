@@ -2,6 +2,7 @@
 set -euo pipefail
 
 install_filelight() {
+  echo "Starting install-filelight.sh..."
   echo "Filelight (GUI) is not supported. Use terminal tools like ncdu."
   return 1
 }

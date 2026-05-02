@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_opencode() {
-  echo "Starting OpenCode install script..."
+  echo "Starting install-opencode.sh..."
 
   # --- Install OpenCode CLI ---
 

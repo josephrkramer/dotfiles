@@ -2,7 +2,7 @@
 set -euo pipefail
 
 install_nvidia_sync() {
-  echo "Starting NVIDIA Sync installation..."
+  echo "Starting install-nvidia-sync.sh..."
   sudo curl -fsSL https://workbench.download.nvidia.com/stable/linux/gpgkey -o /etc/apt/trusted.gpg.d/ai-workbench-desktop-key.asc
   echo "deb https://workbench.download.nvidia.com/stable/linux/debian default proprietary" | sudo tee -a /etc/apt/sources.list > /dev/null
   sudo apt update
