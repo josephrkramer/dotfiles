@@ -48,11 +48,7 @@ setup_chromeos() {
   # install antigravity
   if [ "$HEADLESS" -eq 0 ]; then
     ./install-antigravity.sh
-    ./install-nvidia-sync.sh
   fi
-
-  # install chrome (required for antigravity agent browser)
-  #./install-chrome.sh
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
