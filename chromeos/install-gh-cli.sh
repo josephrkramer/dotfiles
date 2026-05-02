@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 echo "Starting install-gh-cli.sh..."
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
