@@ -29,7 +29,6 @@ create_mock "install-vscode.sh"
 create_mock "install-node.sh"
 create_mock "install-gemini.sh"
 create_mock "install-opencode.sh"
-create_mock "install-antigravity.sh"
 
 # Mock 'gh' command
 cat << 'EOF' > "$MOCK_DIR/gh"
@@ -54,16 +53,11 @@ pushd "$MOCK_DIR" > /dev/null
 echo "Testing headless=0 (default)..."
 output=$(setup_chromeos)
 echo "$output" | grep -q "Mocked install-vscode.sh"
-echo "$output" | grep -q "Mocked install-antigravity.sh"
 
 echo "Testing --headless..."
 output=$(setup_chromeos --headless)
 if echo "$output" | grep -q "Mocked install-vscode.sh"; then
   echo "FAIL: install-vscode.sh was called in headless mode" >&2
-  exit 1
-fi
-if echo "$output" | grep -q "Mocked install-antigravity.sh"; then
-  echo "FAIL: install-antigravity.sh was called in headless mode" >&2
   exit 1
 fi
 

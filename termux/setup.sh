@@ -33,11 +33,6 @@ setup_termux() {
 
   # install gemini cli
   ./install-gemini.sh
-
-  # install antigravity
-  if [ "$HEADLESS" -eq 0 ]; then
-    ./install-antigravity.sh || true
-  fi
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
