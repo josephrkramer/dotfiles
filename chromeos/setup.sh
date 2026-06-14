@@ -44,11 +44,6 @@ setup_chromeos() {
 
   # install opencode
   ./install-opencode.sh
-
-  # install antigravity
-  if [ "$HEADLESS" -eq 0 ]; then
-    ./install-antigravity.sh
-  fi
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
